@@ -3,7 +3,7 @@ import './global.css'
 import styles from './App.module.css';
 import {PlusCircle, TagSimple} from 'phosphor-react'
 import { Task } from './components/Task';
-import { useState } from 'react';
+import { FormEvent, useState, ChangeEvent, InvalidEvent } from 'react';
 
 
 export function App() {
@@ -17,8 +17,8 @@ export function App() {
     },
   ])
 
-  function handleCreateNewTask(){
-    event?.preventDefault()
+  function handleCreateNewTask(event:FormEvent){
+    event.preventDefault()
     
     setTasks([...tasks , {
       id: Math.max(... tasks.map(task => task.id )) + 1,
@@ -27,9 +27,14 @@ export function App() {
     setNewTaskText('')
   }
 
+  function handleNewCommentInvalid(event:InvalidEvent<HTMLInputElement>){
+    event?.target.setCustomValidity('Esse campo é obrigatório!')
+  }
+
   
-  function handleNewTaskChange (event:any){
-    setNewTaskText(event?.target.value)
+  function handleNewTaskChange (event:ChangeEvent<HTMLInputElement>){
+    setNewTaskText(event.target.value)
+    event?.target.setCustomValidity('')
   }
 
   function deleteTask(taskToDelete: number){
@@ -38,6 +43,8 @@ export function App() {
     })
     setTasks(taskWithoutDeletedOne)
   }
+
+  const isNewTaskEmpty = newTaskText.length === 0;
   
   
   return (
@@ -47,10 +54,20 @@ export function App() {
         <div>
           <div className={styles.newTask}>
             <form onSubmit={handleCreateNewTask}>
-              <input type="text" placeholder='Adicione uma nova tarefa' name="task" onChange={handleNewTaskChange} value={newTaskText}/>
-              <button title ="Criar nova tarefa" type="submit">
+              <input 
+                type="text" 
+                placeholder='Adicione uma nova tarefa' 
+                onChange={handleNewTaskChange} 
+                value={newTaskText}
+                onInvalid={handleNewCommentInvalid}
+                required
+              />
+              <button title ="Criar nova tarefa" 
+                type="submit" 
+                disabled={isNewTaskEmpty}>
                 Criar
-                <PlusCircle size={18} weight='bold'/> 
+                <PlusCircle size={18} weight='bold'
+              /> 
               </button>
             </form>
           </div>
@@ -76,9 +93,7 @@ export function App() {
             </div>
           </div>
         </div>
-        
       </main>
-      
     </div>
   )
 }
