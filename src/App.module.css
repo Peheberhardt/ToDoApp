@@ -1,0 +1,142 @@
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main > div{
+    display: flex;
+    width: 46rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+main .newTask{
+    width: 46rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top:-1.6875rem;
+}
+
+main form{
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+}
+
+main .newTask input{
+    width:39.875rem;
+    height:3.375rem;
+    
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+
+    color:var(--gray-300);
+    background-color:var(--gray-500);
+
+    padding: 16px;
+
+    font-size: 1rem;
+    line-height: 22.4px;
+}
+
+main .newTask button{
+    width: 5.625rem;
+    height: 3.25rem;
+
+    border-radius: 8px;
+    border: 1px solid var(--gray-700);
+
+    background-color: var(--blue-dark);
+    color: var(--gray-100);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 20px;
+
+    cursor: pointer;
+    transition: 0.1s;
+    
+}
+
+main .newTask button:hover{
+    background-color: var(--blue);
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    margin-top: 64px;
+}
+
+.headerList{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerList p{
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 17px;
+    display: flex;
+}
+
+.tarefasText{
+    color:var(--blue);
+    
+}
+
+.finalizadasText{
+    color:var(--purple);
+}
+
+.headerList span{
+   
+    font-size: .75rem;
+    line-height: 15px;
+    word-spacing: 2px;
+    
+
+    margin-left: 8px;
+    margin-bottom: 8px;
+
+    background-color: var(--gray-400);
+    color: var(--gray-200);
+    
+    padding: 2px 8px;
+
+    border-radius: 20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contentList{
+    display: flex;
+    flex-wrap: wrap;
+    
+    width: 100%;
+    
+    margin-top: 24px;
+
+}
+
+
+
